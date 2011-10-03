@@ -3,7 +3,7 @@
 Currently, this only works with [my fork](https://github.com/hoverlover/campfire-bot).  Hopefully,
 the maintainers of the [main repo](https://github.com/joshwand/campfire-bot) will pull in my changes.
 
-#CampfireBot::AbsenteeCamper [![Build Status](https://secure.travis-ci.org/hoverlover/campfire-bot-absentee-camper
+#CampfireBot::AbsenteeCamper [![Build Status](https://secure.travis-ci.org/hoverlover/campfire-bot-absentee-camper.png)](http://travis-ci.org/hoverlover/campfire-bot-absentee-camper)
 
 This is a plugin for use with [campfire-bot](https://github.com/joshwand/campfire-bot).
 It will monitor a Campfire room for _@mentions_, and notify the
