@@ -1,0 +1,13 @@
+---
+test:
+  site: my_site
+  use_ssl: true
+  log_dir: log
+  rooms:
+    - General
+  api_key: fake-key
+  nickname: Campfire Bot
+  fullname: Campfire Bot
+  enable_plugins:
+    - absentee_camper
+
