@@ -8,6 +8,5 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec'
   gem 'rake'
-  gem 'ruby-debug19'
   gem 'growl'
 end

@@ -1,7 +1,6 @@
 require "rubygems"
 require "bundler/setup"
 Bundler.require(:default, :test)
-require 'ruby-debug'
 
 BOT_ROOT = File.join(FileUtils.pwd, 'spec')
 BOT_ENVIRONMENT = 'test'
