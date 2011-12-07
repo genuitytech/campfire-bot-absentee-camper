@@ -3,7 +3,10 @@ module CampfireBot
     module Notification
       class NotificationManager
 
-        def initialize(room, user_config)
+        def initialize(message, user_config)
+          @message = message
+          room = message[:room]
+
           if user_config.is_a?(Hash) and user_config['notification_methods']
             user_config['notification_methods'].each do |notifier, initialization_info|
               add_notifier Notification.const_get("#{notifier}Notifier".to_sym).new(room, initialization_info)
@@ -17,11 +20,15 @@ module CampfireBot
           end
         end
 
-        def send_notifications(message)
-          @notifiers.each { |notifier| notifier.notify message }
+        def send_notifications
+          @notifiers.each { |notifier| notifier.notify format_message(@message) }
         end
 
         private
+
+        def format_message(message)
+          "#{message[:person]} says: #{message[:message]}"
+        end
 
         def add_notifier(notifier)
           @notifiers ||= []

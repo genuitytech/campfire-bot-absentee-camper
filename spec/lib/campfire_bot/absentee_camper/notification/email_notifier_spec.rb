@@ -5,7 +5,6 @@ module CampfireBot
     module Notification
       describe EmailNotifier do
 
-        let(:email_address) { "johnny@test.com" }
         let(:uri) { 'http://www.google.com' }
         let(:body) do
           body = <<-BODY
@@ -16,7 +15,7 @@ Come back to the campfire!  We're having a good time telling ghost stories!  Her
 #{uri}
 BODY
         end
-        let(:message) { "this is a test" }
+        let(:message) { "Jon Levin says: this is a test" }
         let(:user_id) { 1 }
         let(:email_address) { 'jon.levin@shredders-r-us.com' }
         let(:room) do
@@ -41,7 +40,7 @@ BODY
           it "logs a message indicating the message is being sent" do
             Pony.stub(:mail)
             Logger.instance.should_receive(:debug).with("sending email to #{email_address}")
-            subject.notify(message)
+            subject.notify message
           end
 
           it "sends the email with the correct information" do
@@ -50,7 +49,7 @@ BODY
               :body => body
             }.merge(pony_options))
 
-            subject.notify(message)
+            subject.notify message
           end
         end
       end

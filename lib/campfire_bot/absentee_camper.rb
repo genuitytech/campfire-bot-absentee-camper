@@ -29,7 +29,7 @@ module CampfireBot
 
             # If the user isn't in the room, fire off a notification
             unless room.users.map { |u| u['id'] }.include? user_id_from_config(mentioned)
-              NotificationManager.new(room, plugin_config['users'][mentioned]).send_notifications body
+              NotificationManager.new(msg, plugin_config['users'][mentioned]).send_notifications
               room.speak("[Notified #{mentioned}]")
             end
           end

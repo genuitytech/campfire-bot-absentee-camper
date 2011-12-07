@@ -91,11 +91,11 @@ module CampfireBot
 
               NotificationManager
                 .should_receive(:new)
-                .with(room, users_in_config[name])
+                .with(message, users_in_config[name])
                 .and_return(notification_manager)
             end
 
-            notification_manager.should_receive(:send_notifications).with(message['body']).exactly(times).times
+            notification_manager.should_receive(:send_notifications).exactly(times).times
             subject.role_call message
           end
         end
@@ -130,10 +130,10 @@ module CampfireBot
         def sends_notification_to(name)
           NotificationManager
             .should_receive(:new)
-            .with(room, users_in_config[name])
+            .with(message, users_in_config[name])
             .and_return(notification_manager)
 
-          notification_manager.should_receive(:send_notifications).with(message['body'])
+          notification_manager.should_receive(:send_notifications)
         end
 
         def does_not_send_notification

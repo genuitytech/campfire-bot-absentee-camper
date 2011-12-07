@@ -6,6 +6,13 @@ module CampfireBot
       describe NotificationManager do
         let(:room) { double('room').as_null_object }
         let(:user_id) { 1 }
+        let(:message) do
+          {
+            :person => "Chad Boyd",
+            :message => "test",
+            :room => room
+          }
+        end
 
         before(:all) do
           NotificationManager.send :public, :add_notifier
@@ -103,12 +110,12 @@ module CampfireBot
 
               it "logs a message" do
                 Logger.instance.should_receive(:debug).with(log_message)
-                NotificationManager.new(room, user_info)
+                NotificationManager.new(message, user_info)
               end
 
               it "creates an EmailNotifier by default" do
                 EmailNotifier.should_receive(:new).with(room, user_info)
-                NotificationManager.new(room, user_info)
+                NotificationManager.new(message, user_info)
               end
             end
           end
@@ -118,7 +125,8 @@ module CampfireBot
           let(:user_info) do
             { 'id' => user_id }
           end
-          let(:message) { "test" }
+          let(:user_name) { "Chad" }
+          let(:formatted_message) { "#{message[:person]} says: #{message[:message]}" }
 
           context "when there is only one notifier" do
             before do
@@ -127,8 +135,8 @@ module CampfireBot
 
             it "only sends one notification" do
               ProwlNotifier.any_instance.should_receive(:notify)
-              manager = NotificationManager.new(room, user_info)
-              manager.send_notifications message
+              manager = NotificationManager.new(message, user_info)
+              manager.send_notifications
             end
           end
 
@@ -143,15 +151,15 @@ module CampfireBot
             it "only sends one notification" do
               ProwlNotifier.any_instance.should_receive(:notify)
               EmailNotifier.any_instance.should_receive(:notify)
-              manager = NotificationManager.new(room, user_info)
-              manager.send_notifications message
+              manager = NotificationManager.new(message, user_info)
+              manager.send_notifications
             end
           end
 
           it "sends the correct message" do
-            EmailNotifier.any_instance.should_receive(:notify).with(message)
-            manager = NotificationManager.new(room, user_id)
-            manager.send_notifications message
+            EmailNotifier.any_instance.should_receive(:notify).with(formatted_message)
+            manager = NotificationManager.new(message, user_id)
+            manager.send_notifications
           end
         end
       end
