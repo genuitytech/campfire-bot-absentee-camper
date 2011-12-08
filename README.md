@@ -1,6 +1,6 @@
 # NOTE
 
-Currently, this only works with [my fork](https://github.com/hoverlover/campfire-bot).  Hopefully,
+Currently, this only works with [my campfire-bot fork](https://github.com/hoverlover/campfire-bot).  Hopefully,
 the maintainers of the [main repo](https://github.com/joshwand/campfire-bot) will pull in my changes.
 
 #CampfireBot::AbsenteeCamper [![Build Status](https://secure.travis-ci.org/hoverlover/campfire-bot-absentee-camper.png)](http://travis-ci.org/hoverlover/campfire-bot-absentee-camper)
@@ -15,15 +15,12 @@ triggered by the _@mention_.
 
 ## Usage
 
-1. First, make sure you install the campfire-bot gem.
-2. `gem install campfire-bot-absentee-camper`
-3. Create Gemfile with the following lines:
-    gem 'campfire-bot'
-    gem 'campfire-bot-absentee-camper'
-4. Create your _absentee-camper-config.yml_ file (see below).
-5. Register the plugin to your main _config.yml_ file
-6. `bundle exec bot <environment>`, where `<environment>` is the
-   matching environment from the config file.
+1. Install the gems:
+        `gem install campfire-bot campfire-bot-absentee-camper`
+2. Create your _absentee-camper-config.yml_ file (see below)
+3. Register the plugin to your main campfire-bot _config.yml_ file
+4. `bundle exec bot <environment>`, where `<environment>` is the
+   matching environment from _config.yml_.
 
 ## Configuration
 
@@ -54,7 +51,7 @@ Here is a sample config file:
         # Default email notifier
         john: 987654
 
-* `production` - This is the environment for which the settins apply.
+* `production` - This is the environment for which the settings apply.
   You can specify multiple environments (e.g. development, test, etc).
 * `pony_options` - The configuration options for [Pony](https://github.com/adamwiggins/pony)
 * `users` - Each user line consists of the name of the mention name and
@@ -71,7 +68,6 @@ Here is a sample config file:
 
 ## TODO
 
-* More specs!
 * Provide context in the notification.  For example, in a Campfire
   session there are two users: John and Steve.  Another user, Chad
   is not present in the room:
