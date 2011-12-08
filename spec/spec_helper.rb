@@ -5,7 +5,7 @@ Bundler.require(:default, :test)
 BOT_ROOT = File.join(FileUtils.pwd, 'spec')
 BOT_ENVIRONMENT = 'test'
 require 'bot'
-require 'absentee_camper'
+require 'campfire_bot/absentee_camper'
 
 RSpec.configure do |config|
   config.include CampfireBot::AbsenteeCamper::Notification

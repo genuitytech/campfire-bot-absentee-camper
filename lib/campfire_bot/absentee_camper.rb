@@ -1,12 +1,12 @@
 module CampfireBot
   module AbsenteeCamper
-    autoload :Config, "absentee_camper/config"
-    autoload :Logger, "absentee_camper/logger"
-    autoload :NotificationManager, "absentee_camper/notification/notification_manager"
+    autoload :Config, "campfire_bot/absentee_camper/config"
+    autoload :Logger, "campfire_bot/absentee_camper/logger"
+    autoload :NotificationManager, "campfire_bot/absentee_camper/notification/notification_manager"
 
     module Notification
-      autoload :EmailNotifier, "absentee_camper/notification/email_notifier"
-      autoload :ProwlNotifier, "absentee_camper/notification/prowl_notifier"
+      autoload :EmailNotifier, "campfire_bot/absentee_camper/notification/email_notifier"
+      autoload :ProwlNotifier, "campfire_bot/absentee_camper/notification/prowl_notifier"
     end
 
     class Plugin < CampfireBot::Plugin

@@ -19,7 +19,7 @@ triggered by the _@mention_.
         `gem install campfire-bot campfire-bot-absentee-camper`
 2. Create your _absentee-camper-config.yml_ file (see below)
 3. Register the plugin to your main campfire-bot _config.yml_ file
-4. `bundle exec bot <environment>`, where `<environment>` is the
+4. `campfire-bot <environment>`, where `<environment>` is the
    matching environment from _config.yml_.
 
 ## Configuration
